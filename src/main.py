@@ -9,4 +9,4 @@ app.include_router(expense_router.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello Bigger Applications!"}
+    return {"message": "First Update!"}
