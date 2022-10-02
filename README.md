@@ -1,2 +1,2 @@
-# smc-expense-settlement-service
+# Expense Settlement API
 This application is part of the "Split My Costs" application. This is a backend API that is responsible of settling the expenses among the contributors.
