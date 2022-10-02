@@ -1,3 +1,4 @@
+from src.models.contribution import Contribution
 from src.models.contributor import Contributor
 from src.models.event import Event
 from src.models.expense import Expense
@@ -7,11 +8,11 @@ from src.services.expense_manager import ExpenseManager
 def test_calculate_pending_transfers():
     event = Event("CCC Bowling + Dinner - Aug 26th")
 
-    thilan = Contributor("thilan")
-    omal = Contributor("omal")
-    jitha = Contributor("jitha")
-    chathu = Contributor("chathu")
-    mindula = Contributor("mindula")
+    thilan = Contributor(1, "thilan")
+    omal = Contributor(2, "omal")
+    jitha = Contributor(3, "jitha")
+    chathu = Contributor(4, "chathu")
+    mindula = Contributor(5, "mindula")
 
     event.add_contributor(thilan)
     event.add_contributor(omal)
@@ -68,3 +69,59 @@ def test_calculate_pending_transfers():
         {'amount': 4235, 'from': 'jitha', 'to': 'thilan'},
         {'amount': 2435, 'from': 'omal', 'to': 'thilan'}
     ]
+
+
+def test_calculate_expense_balances():
+    contributor_1 = Contributor(1, "thilan")
+    contributor_2 = Contributor(2, "bula")
+    contributor_3 = Contributor(3, "chathu")
+
+    contribution_1 = Contribution(1000, contributor_1)
+    contribution_2 = Contribution(2000, contributor_2)
+    contribution_3 = Contribution(0, contributor_3)
+    expense_1 = Expense("bowling")
+    expense_1.add_contribution(contribution_1)
+    expense_1.add_contribution(contribution_2)
+    expense_1.add_contribution(contribution_3)
+
+    contribution_4 = Contribution(1000, contributor_1)
+    contribution_5 = Contribution(1000, contributor_2)
+    expense_2 = Expense("food")
+    expense_2.add_contribution(contribution_4)
+    expense_2.add_contribution(contribution_5)
+
+    event = Event("outing")
+    event.add_contributor(contributor_1)
+    event.add_contributor(contributor_2)
+    event.add_contributor(contributor_3)
+    event.add_expense(expense_1)
+    event.add_expense(expense_2)
+    event.update_contributor_totals()
+
+    to_receive, to_pay = ExpenseManager.calculate_expense_balances(event)
+
+    assert to_receive == {'bula': 1000}
+    assert to_pay == {'chathu': 1000, 'thilan': 0}
+
+
+def test_event_obj():
+
+    event = {
+        "name": "event 1",
+        "contributors": [
+            {"id": 1, "name": "thilan"},
+            {"id": 2, "name": "chathu"},
+            {"id": 3, "name": "bula"},
+        ],
+        "expenses": [
+            {
+                "id": 1,
+                "name": "bowling",
+                "participants": [1, 2],
+                "contributions": [
+                    {"amount": 1000, "contributor": 1}
+                ]
+            }
+        ]
+
+    }
