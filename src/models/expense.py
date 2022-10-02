@@ -1,27 +1,20 @@
-from src.models.contributor import Contributor
+from typing import List
+
+from src.models.contribution import Contribution
 
 
 class Expense:
 
     def __init__(self, name: str):
         self.name = name
-        self.contributions = {}
+        self.contributions: List[Contribution] = []
 
-    @property
-    def total_cost(self):
-        return sum(self.contributions.values())
+    def add_contribution(self, contribution: Contribution):
+        self.contributions.append(contribution)
 
-    @property
-    def cost_per_person(self):
-        if not self.contributions:
-            return 0
-        return self.total_cost / len(self.contributions)
+    def get_total_cost(self):
+        total_cost = sum(c.amount for c in self.contributions)
+        return total_cost
 
-    def add_contribution(self, contributor: Contributor, amount: float):
-        if contributor.name not in self.contributions:
-            raise KeyError(f"Contributor '{contributor.name}' not added to Expense.")
-        self.contributions[contributor.name] = amount
-
-    def add_contributor(self, contributor: Contributor):
-        if contributor.name not in self.contributions:
-            self.contributions[contributor.name] = 0
+    def get_average_cost(self):
+        return self.get_total_cost() / len(self.contributions)

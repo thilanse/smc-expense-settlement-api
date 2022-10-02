@@ -5,16 +5,17 @@ class ExpenseManager:
 
     @staticmethod
     def calculate_expense_balances(event: Event):
+        """ Calculate per contributor, the amount to pay and the amount to receive. """
+
         to_receive = {}
         to_pay = {}
-        for person in event.contributors:
-            total_spent = event.total_spent_per_person[person]
-            actual_cost = event.cost_per_person[person]
-            amount_to_transfer = total_spent - actual_cost
+
+        for contributor in event.contributors:
+            amount_to_transfer = contributor.total_spent - contributor.total_cost
             if amount_to_transfer > 0:
-                to_receive[person] = abs(int(amount_to_transfer))
+                to_receive[contributor.name] = abs(int(amount_to_transfer))
             else:
-                to_pay[person] = abs(int(amount_to_transfer))
+                to_pay[contributor.name] = abs(int(amount_to_transfer))
 
         to_receive = dict(sorted(to_receive.items(), key=lambda x: x[1], reverse=True))
         to_pay = dict(sorted(to_pay.items(), key=lambda x: x[1], reverse=True))
@@ -57,4 +58,3 @@ class ExpenseManager:
             carry_forward_pay = person_to_receive
 
         return transfers
-    
