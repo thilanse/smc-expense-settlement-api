@@ -1,4 +1,4 @@
-from models.contributor import Contributor
+from src.models.contributor import Contributor
 
 
 class Transfer:

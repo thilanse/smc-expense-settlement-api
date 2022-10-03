@@ -1,10 +1,10 @@
 from fastapi import APIRouter
 
-from models.contribution import Contribution
-from models.contributor import Contributor
-from models.event import Event
-from models.expense import Expense
-from routers.models.request_models import EventDTO
+from src.models.contribution import Contribution
+from src.models.contributor import Contributor
+from src.models.event import Event
+from src.models.expense import Expense
+from src.routers.models.request_models import EventDTO
 
 router = APIRouter()
 

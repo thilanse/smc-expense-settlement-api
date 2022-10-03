@@ -1,4 +1,4 @@
-from models.contributor import Contributor
+from src.models import Contributor
 
 
 def test_contributor():

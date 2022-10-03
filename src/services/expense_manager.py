@@ -1,4 +1,4 @@
-from models.event import Event
+from src.models.event import Event
 
 
 class ExpenseManager:

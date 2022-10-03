@@ -1,7 +1,7 @@
-from models.contribution import Contribution
-from models.contributor import Contributor
-from models.event import Event
-from models import Expense
+from src.models.contribution import Contribution
+from src.models import Contributor
+from src.models.event import Event
+from src.models import Expense
 
 
 def mock_event_1():

@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 
-from routers import expense_router
+from src.routers import expense_router
 
 app = FastAPI()
 

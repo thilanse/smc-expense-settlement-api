@@ -1,6 +1,6 @@
-from models.contribution import Contribution
-from models.contributor import Contributor
-from models import Expense
+from src.models.contribution import Contribution
+from src.models import Contributor
+from src.models import Expense
 
 
 def test_expense():

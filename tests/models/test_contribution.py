@@ -1,5 +1,5 @@
-from models.contribution import Contribution
-from models.contributor import Contributor
+from src.models.contribution import Contribution
+from src.models import Contributor
 
 
 def test_contribution():
