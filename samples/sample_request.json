@@ -1,0 +1,73 @@
+{
+  "name": "string",
+  "contributors": [
+    {
+      "id": 1,
+      "name": "thilan"
+    },
+    {
+      "id": 2,
+      "name": "bula"
+    },
+    {
+      "id": 3,
+      "name": "chathu"
+    }
+  ],
+  "expenses": [
+    {
+      "id": 0,
+      "name": "bowling",
+      "contributions": [
+        {
+          "amount": 5000,
+          "contributor": {
+            "id": 1,
+            "name": "thilan"
+          }
+        },
+        {
+          "amount": 1000,
+          "contributor": {
+            "id": 3,
+            "name": "chathu"
+          }
+        },
+        {
+          "amount": 0,
+          "contributor": {
+            "id": 2,
+            "name": "bula"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "dinner",
+      "contributions": [
+        {
+          "amount": 0,
+          "contributor": {
+            "id": 1,
+            "name": "thilan"
+          }
+        },
+        {
+          "amount": 0,
+          "contributor": {
+            "id": 3,
+            "name": "chathu"
+          }
+        },
+        {
+          "amount": 18000,
+          "contributor": {
+            "id": 2,
+            "name": "bula"
+          }
+        }
+      ]
+    }
+  ]
+}
