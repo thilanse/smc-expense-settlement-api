@@ -1,8 +1,8 @@
 from typing import List
 
-from src.models.contributor import Contributor
-from src.models.expense import Expense
-from src.models.transfer import Transfer
+from models.contributor import Contributor
+from models.expense import Expense
+from models.transfer import Transfer
 
 
 class Event:

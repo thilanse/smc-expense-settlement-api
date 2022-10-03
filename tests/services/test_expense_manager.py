@@ -1,8 +1,8 @@
-from src.models.contribution import Contribution
-from src.models.contributor import Contributor
-from src.models.event import Event
-from src.models.expense import Expense
-from src.services.expense_manager import ExpenseManager
+from models.contribution import Contribution
+from models.contributor import Contributor
+from models.event import Event
+from models import Expense
+from services import ExpenseManager
 
 
 def test_calculate_pending_transfers():

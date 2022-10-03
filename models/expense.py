@@ -1,6 +1,6 @@
 from typing import List
 
-from src.models.contribution import Contribution
+from models.contribution import Contribution
 
 
 class Expense:
